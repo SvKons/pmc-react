@@ -1,0 +1,180 @@
+@import '../../styles/variables.scss';
+
+.services__bg {
+    height: 100vh;
+}
+
+.services__wrap-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+.services__wrap {
+    position: relative;
+}
+
+.services__wrap:last-child {
+    margin-bottom: 100px;
+}
+
+.services__wrap-bg {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding-top: 80px;
+    position: relative;
+}
+
+.services__wrap-bg::before {
+    content: '';
+    position: absolute;
+    top: 173px;
+    bottom: -25px;
+    right: -62px;
+    left: 314px;
+    background-color: #f4f7fa;
+    z-index: -50;
+}
+
+@media (max-width: 1440px) {
+    .services__wrap-bg::before {
+        right: 95px;
+        left: 220px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .services__wrap-bg::before {
+        top: 220px;
+        bottom: -22px;
+        right: 668px;
+        left: 749px;
+    }
+}
+
+.services__wrap-bg__pmc::before {
+    content: '';
+    position: absolute;
+    top: 220px;
+    bottom: -20px;
+    right: 368px;
+    left: 150px;
+    background-color: #f4f7fa;
+    z-index: -50;
+}
+
+@media (max-width: 1440px) {
+    .services__wrap-bg__pmc::before {
+        left: 50px;
+        right: 282px;
+    }
+}
+
+@media (min-width: 2560px) {
+    .services__wrap-bg__pmc::before {
+        top: 220px;
+        bottom: -22px;
+        right: 788px;
+        left: 600px;
+    }
+}
+
+.services__info {
+    gap: 26px;
+    padding-top: 110px;
+}
+
+.services__info__top {
+    gap: 200px;
+    padding-top: 0px;
+}
+
+.services__info__pmc {
+    gap: 16px;
+}
+
+.engineering-services {
+    padding-bottom: 40px;
+}
+
+.services__description,
+.services__info {
+    width: 600px;
+    color: $basic-black;
+}
+
+.services__title-description {
+    font-size: 66px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.services__span {
+    color: #ff7c00;
+}
+
+.services__title {
+    font-size: 52px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+
+.services__text {
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1.2;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+.services__item {
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.7;
+    text-transform: uppercase;
+    padding-left: 20px;
+}
+
+.services__item::before {
+    content: '';
+    background-image: require('./img/icon-arrow.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 5px;
+    left: -12px;
+}
+
+.services__item:not(:last-child) {
+    padding-bottom: 10px;
+}
+
+.engineering-services {
+    height: 100vh;
+    position: relative;
+    scroll-snap-align: start;
+}
+
+// Отвечает за прокрутку за один скрол по колесику мышки
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.services__scroll {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    scroll-snap-align: center;
+    perspective: 500px;
+}
