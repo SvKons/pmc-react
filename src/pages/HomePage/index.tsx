@@ -1,14 +1,17 @@
-import Footer from '../../components/Footer';
+// import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Home from '../../components/Home';
+import { Home } from '../../components/Home';
+import './HomePage.scss';
 
 const HomePage = () => {
     return (
-        <>
+        <div className="home-page-container">
             <Header bg={''} />
-            <Home />
-            <Footer />
-        </>
+            <div className="home-scroll-container">
+                <Home />
+                {/* <Footer /> */}
+            </div>
+        </div>
     );
 };
 

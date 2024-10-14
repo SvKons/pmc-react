@@ -1,26 +1,26 @@
 @import '../../styles/variables.scss';
 
-.background {
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: $basic-black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    transition: background-image 0.5s;
-}
+// .main-info {
+//     display: flex;
+//     justify-content: space-between;
+//     margin-bottom: 51px;
+//     height: 100vh;
+//     padding-top: 60px;
+// }
 
-\.main-info {
+// .main-info__wrap {
+//     display: flex;
+//     gap: 50px;
+//     line-height: 1.4;
+//     height: 500px;
+// }
+
+.main-info {
     display: flex;
     justify-content: space-between;
-    height: 600px;
+    align-items: flex-end; /* Выравниваем элементы по нижнему краю */
     margin-bottom: 51px;
-    position: relative;
-    z-index: 1;
+    height: 600px;
     padding-top: 60px;
 }
 
@@ -28,7 +28,7 @@
     display: flex;
     gap: 50px;
     line-height: 1.4;
-    height: 500px;
+    height: 500px; /* Задаем 100% высоты, чтобы заполнить родительский контейнер */
 }
 
 .main-info__text-left {
@@ -42,6 +42,7 @@
     padding-bottom: 10px;
     text-transform: uppercase;
     max-width: 600px;
+    min-width: 600px;
 }
 
 .main-info__text {
@@ -66,49 +67,104 @@
     align-items: center;
 }
 
-/* Dots */
-
-.dots {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border: 1px solid $basic-white;
-    border-radius: 50%;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: $basic-white;
-}
-
 /* Slider */
 
 .slider {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
 }
 
 .slide {
     position: absolute;
-    top: 0;
-    left: 100%;
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    transform: translateX(100%); /* Стартовая позиция справа */
     opacity: 0;
     transition:
-        opacity 0.5s,
-        left 0.5s;
+        transform 0.5s linear,
+        opacity 0.5s linear;
 }
 
 .slide.active {
-    left: 0;
+    transform: translateX(0); /* Перемещаем слайд на видимую часть */
     opacity: 1;
+}
+
+.slide.exit {
+    transform: translateX(-100%); /* Скрываем слайд влево */
+    opacity: 0;
+}
+
+.main-info__title-left,
+.main-info__text {
+    margin: 0;
+}
+
+/* Кнопки навигации */
+.next,
+.prev {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    z-index: 3;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}
+
+.main-info__title-left,
+.main-info__text,
+.main-info__title-right {
+    opacity: 0;
+    transform: translateY(20px); /* Начальная позиция */
+    transition:
+        opacity 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
+}
+
+.main-info__title-right {
+    text-align: right;
+    width: 50%;
+    transform: translateY(100%); /* Начальное состояние для плавной анимации */
+    transition:
+        opacity 0.5s,
+        transform 0.5s; /* Плавный переход */
+}
+
+.active .main-info__title-left,
+.active .main-info__text,
+.active .main-info__title-right {
+    opacity: 1;
+    transform: translateY(0); /* Плавное появление */
+}
+
+/* Кнопки навигации */
+.next,
+.prev {
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    z-index: 3;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
 }
