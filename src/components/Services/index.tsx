@@ -1,7 +1,7 @@
-import ServiceItem from '../ServicesLink';
-import { servicesData } from './utils';
-import './Services.scss';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { servicesData } from './utils';
+import ServiceItem from '../ServicesLink';
+import './Services.scss';
 
 const Services = () => {
     const { scrollYProgress } = useScroll();

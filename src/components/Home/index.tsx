@@ -352,12 +352,26 @@ const slidesData = [
 
 export const Home = () => {
     const [[page, direction], setPage] = useState([0, 0]);
+    const [isFirstRender, setIsFirstRender] = useState(true);
+    const [showText, setShowText] = useState(false); // Состояние для управления текстом
     const slideIndex = wrap(0, backgrounds.length, page);
 
     const paginate = (newDirection: number) => {
         setPage([page + newDirection, newDirection]);
+        setIsFirstRender(false);
+        setShowText(false); // Скрываем текст перед сменой слайда
     };
 
+    // Показываем текст с задержкой при первой загрузке
+    useEffect(() => {
+        if (isFirstRender) {
+            setTimeout(() => {
+                setShowText(true); // Показываем текст с задержкой
+            }, 500); // Задержка в 500 мс
+        }
+    }, [isFirstRender]);
+
+    // Автоматическое переключение слайдов
     useEffect(() => {
         const interval = setInterval(() => paginate(1), 5000);
         return () => clearInterval(interval);
@@ -371,15 +385,15 @@ export const Home = () => {
                 <AnimatePresence initial={false} custom={direction}>
                     <motion.div
                         key={page}
-                        className={`slide ${direction > 0 ? 'active' : 'exit'}`}
+                        className={`slide ${isFirstRender && page === 0 ? 'first-slide' : 'active'} ${showText ? 'show-text' : ''}`}
                         custom={direction}
                         variants={variants}
-                        initial="enter"
+                        initial={isFirstRender ? 'center' : 'enter'}
                         animate="center"
                         exit="exit"
                         transition={{
                             x: { type: 'spring', stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.5 },
+                            opacity: { duration: isFirstRender ? 2 : 0.5 },
                         }}
                     >
                         <div className="main-info__wrap">
@@ -391,13 +405,6 @@ export const Home = () => {
                         </div>
                     </motion.div>
                 </AnimatePresence>
-
-                <div className="next" onClick={() => paginate(1)}>
-                    {'‣'}
-                </div>
-                <div className="prev" onClick={() => paginate(-1)}>
-                    {'‣'}
-                </div>
             </section>
         </main>
     );

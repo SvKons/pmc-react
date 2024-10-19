@@ -1,24 +1,9 @@
 @import '../../styles/variables.scss';
 
-// .main-info {
-//     display: flex;
-//     justify-content: space-between;
-//     margin-bottom: 51px;
-//     height: 100vh;
-//     padding-top: 60px;
-// }
-
-// .main-info__wrap {
-//     display: flex;
-//     gap: 50px;
-//     line-height: 1.4;
-//     height: 500px;
-// }
-
 .main-info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Выравниваем элементы по нижнему краю */
+    align-items: flex-end;
     margin-bottom: 51px;
     height: 600px;
     padding-top: 60px;
@@ -28,7 +13,7 @@
     display: flex;
     gap: 50px;
     line-height: 1.4;
-    height: 500px; /* Задаем 100% высоты, чтобы заполнить родительский контейнер */
+    height: 500px;
 }
 
 .main-info__text-left {
@@ -82,8 +67,7 @@
 .slide {
     position: absolute;
     width: 100%;
-    // height: 100%;
-    transform: translateX(100%); /* Стартовая позиция справа */
+    transform: translateX(100%);
     opacity: 0;
     transition:
         transform 0.5s linear,
@@ -91,80 +75,38 @@
 }
 
 .slide.active {
-    transform: translateX(0); /* Перемещаем слайд на видимую часть */
+    transform: translateX(0);
     opacity: 1;
 }
 
 .slide.exit {
-    transform: translateX(-100%); /* Скрываем слайд влево */
+    transform: translateX(-100%);
     opacity: 0;
-}
-
-.main-info__title-left,
-.main-info__text {
-    margin: 0;
-}
-
-/* Кнопки навигации */
-.next,
-.prev {
-    position: absolute;
-    top: 50%;
-    cursor: pointer;
-    font-size: 2rem;
-    color: white;
-    z-index: 3;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev {
-    left: 10px;
 }
 
 .main-info__title-left,
 .main-info__text,
 .main-info__title-right {
     opacity: 0;
-    transform: translateY(20px); /* Начальная позиция */
+    transform: translateY(20px);
     transition:
         opacity 0.6s ease-in-out,
         transform 0.6s ease-in-out;
 }
 
-.main-info__title-right {
-    text-align: right;
-    width: 50%;
-    transform: translateY(100%); /* Начальное состояние для плавной анимации */
-    transition:
-        opacity 0.5s,
-        transform 0.5s; /* Плавный переход */
+.show-text .main-info__title-left,
+.show-text .main-info__text,
+.show-text .main-info__title-right {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .active .main-info__title-left,
 .active .main-info__text,
 .active .main-info__title-right {
     opacity: 1;
-    transform: translateY(0); /* Плавное появление */
-}
-
-/* Кнопки навигации */
-.next,
-.prev {
-    position: absolute;
-    top: 50%;
-    cursor: pointer;
-    font-size: 2rem;
-    color: white;
-    z-index: 3;
-}
-
-.next {
-    right: 10px;
-}
-
-.prev {
-    left: 10px;
+    transform: translateY(0);
+    transition:
+        opacity 0.6s ease-in-out,
+        transform 0.6s ease-in-out;
 }

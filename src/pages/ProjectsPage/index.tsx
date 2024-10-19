@@ -4,11 +4,13 @@ import Projects from '../../components/Projects';
 
 const ProjectsPage = () => {
     return (
-        <>
+        <div className="page-container-scroll">
             <Header bg={'header__bg'} />
-            <Projects />
-            <Footer />
-        </>
+            <div className="scroll-container">
+                <Projects />
+                <Footer />
+            </div>
+        </div>
     );
 };
 

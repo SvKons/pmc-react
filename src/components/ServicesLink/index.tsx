@@ -1,6 +1,6 @@
+import { useRef } from 'react';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
 import { IServices } from '../Services/utils';
-import { useRef } from 'react';
 
 interface ServicesLinkProps {
     data: IServices;
@@ -17,7 +17,7 @@ const ServiceItem = ({ data }: ServicesLinkProps) => {
 
     return (
         <div className="wrap services__wrap">
-            <section className="services__scroll">
+            <section className="scroll">
                 <div className="services__wrap-bg">
                     <div className="pmc__img" ref={ref}>
                         <img src={data.imageSrc} alt="Картинка" width="450px" height="600px" />

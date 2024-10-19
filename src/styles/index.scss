@@ -39,3 +39,32 @@ body {
     z-index: -1;
     transition: background-image 0.5s ease-in-out;
 }
+
+.page-container-scroll {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.scroll-container {
+    flex: 1;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+// Отвечает за прокрутку за один скрол по колесику мышки
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.scroll {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    scroll-snap-align: center;
+    perspective: 500px;
+}
