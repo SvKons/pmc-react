@@ -1,7 +1,8 @@
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
 import { projectsData } from './utils';
 import ProjectItem from '../ProjectsLink';
 import './Projects.scss';
+import { useState } from 'react';
 
 const Projects = () => {
     const { scrollYProgress } = useScroll();
@@ -10,6 +11,18 @@ const Projects = () => {
         damping: 30,
         restDelta: 0.001,
     });
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = () => {
+        setCurrentIndex(prevIndex => Math.min(prevIndex + 1, projectsData.length - 4));
+    };
+
+    const handlePrev = () => {
+        setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
+    };
+
+    const visibleProjects = projectsData.slice(currentIndex, currentIndex + 4);
 
     return (
         <>
@@ -35,11 +48,19 @@ const Projects = () => {
             </div>
 
             <div className="projects__list-container">
-                <div className="projects__wrap-list">
+                <button className="projects__button projects__button--prev" onClick={handlePrev} disabled={currentIndex === 0}>
+                    &#9664;
+                </button>
+                <motion.div className="projects__wrap-list" initial={{ x: 0 }} animate={{ x: -currentIndex * 25 + '%' }} transition={{ duration: 0.5 }}>
                     {projectsData.map((data, index) => (
-                        <ProjectItem key={index} data={data} />
+                        <div className="projects__wrapper" key={index}>
+                            <ProjectItem data={data} />
+                        </div>
                     ))}
-                </div>
+                </motion.div>
+                <button className="projects__button projects__button--next" onClick={handleNext} disabled={currentIndex >= projectsData.length - 4}>
+                    &#9654;
+                </button>
                 <motion.div style={{ scaleX }} />
             </div>
         </>

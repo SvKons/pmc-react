@@ -4,11 +4,13 @@ import Header from '../../components/Header';
 
 const ContactsPage = () => {
     return (
-        <>
+        <div className="page-container-scroll">
             <Header bg={'header__bg'} />
-            <Contacts />
-            <Footer />
-        </>
+            <div className="scroll-container">
+                <Contacts />
+                <Footer />
+            </div>
+        </div>
     );
 };
 

@@ -17,11 +17,18 @@
 .contacts__form {
     display: flex;
     justify-content: space-between;
-    margin: 80px 0;
+}
+
+.contacts__form_footer {
+    flex-direction: column;
 }
 
 .contacts__info {
-    flex-basis: 48%;
+    width: 50%;
+}
+
+.contacts__info_footer {
+    width: 100%;
 }
 
 .contacts__title {
@@ -32,18 +39,16 @@
 }
 
 .contacts__details {
-    flex-basis: 48%;
-    // opacity: 0;
-    transform: translateX(80px);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 
-// .contacts__details.show {
-//     opacity: 1;
-//     transform: translateX(0);
-//     transition:
-//         opacity 0.6s ease-in-out,
-//         transform 0.6s ease-in-out;
-// }
+.contacts__details_footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 .contacts__details input[type='text'],
 .contacts__details input[type='email'] {
@@ -51,13 +56,13 @@
     color: $basic-black;
     outline: none;
     border: 1px solid $basic-grey;
-    margin: 35px 15px;
+    margin-bottom: 12px;
+    margin-right: 8px;
     font-size: 14px;
 }
 
 .contacts__details textarea {
     padding: 15px 20px;
-    margin: 0 15px;
     color: $basic-black;
     outline: none;
     border: 1px solid $basic-grey;
@@ -72,7 +77,7 @@
     background: $basic-black;
     outline: none;
     border: none;
-    margin: 15px;
+    margin: 15px 0;
     font-size: 14px;
     letter-spacing: 2px;
     cursor: pointer;

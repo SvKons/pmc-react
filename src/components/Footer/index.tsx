@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import Contacts from '../Contacts';
 
 const Footer = () => {
     const showPhoneNumber = () => {
@@ -35,16 +36,16 @@ const Footer = () => {
                             </a>
                         </div>
 
-                        <div className="footer__contacts">
+                        {/* <div className="footer__contacts">
                             <Link to={'./HomePage/'} className="footer__link">
                                 <img src={require('./img/logo-no-background.png')} width="100px" className="footer__logo" alt="Лого PMCCON" />
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
+                <Contacts isFooter={true} />
             </footer>
         </>
     );
 };
-
 export default Footer;
