@@ -20,8 +20,8 @@ const ProjectItem = ({ data }: ProjectItemProps) => {
         <section className="scroll">
             <div className="projects__item">
                 <img src={data.imageSrc} alt={data.title} width="100%" height="100%" />
-                <Link to="#" className="projects__link">
-                    {data.title}
+                <Link to="#" className="projects__link ">
+                    <span className="projects__title ">{data.title}</span>
                 </Link>
             </div>
             <motion.h2 style={{ y }}></motion.h2>

@@ -25,19 +25,19 @@
     position: relative;
 }
 
-// .projects__wrap-list::before {
-//     content: '';
-//     background-image: require('../img/bg_projects.png');
-//     background-size: cover;
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     z-index: 50;
-// }
+.projects__wrap-list::before {
+    content: '';
+    background-image: url(./img/bg_projects.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
 .projects__item {
     font-size: 34px;
@@ -67,7 +67,7 @@
     color: #fff;
     background: none;
     border: none;
-    z-index: 100;
+    z-index: 1000;
     padding: 20px 30px;
     cursor: pointer;
 }
@@ -129,6 +129,7 @@
     font-size: 24px;
     cursor: pointer;
     z-index: 100;
+    color: $basic-white;
 }
 
 .projects__button--prev {

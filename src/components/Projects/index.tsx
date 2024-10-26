@@ -1,8 +1,9 @@
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { projectsData } from './utils';
 import ProjectItem from '../ProjectsLink';
 import './Projects.scss';
 import { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 const Projects = () => {
     const { scrollYProgress } = useScroll();
@@ -22,7 +23,11 @@ const Projects = () => {
         setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
-    const visibleProjects = projectsData.slice(currentIndex, currentIndex + 4);
+    const handlers = useSwipeable({
+        onSwipedLeft: handleNext,
+        onSwipedRight: handlePrev,
+        trackMouse: true,
+    });
 
     return (
         <>
@@ -47,9 +52,9 @@ const Projects = () => {
                 </div>
             </div>
 
-            <div className="projects__list-container">
+            <div className="projects__list-container" {...handlers}>
                 <button className="projects__button projects__button--prev" onClick={handlePrev} disabled={currentIndex === 0}>
-                    &#9664;
+                    &#12296;
                 </button>
                 <motion.div className="projects__wrap-list" initial={{ x: 0 }} animate={{ x: -currentIndex * 25 + '%' }} transition={{ duration: 0.5 }}>
                     {projectsData.map((data, index) => (
@@ -59,7 +64,7 @@ const Projects = () => {
                     ))}
                 </motion.div>
                 <button className="projects__button projects__button--next" onClick={handleNext} disabled={currentIndex >= projectsData.length - 4}>
-                    &#9654;
+                    &#12297;
                 </button>
                 <motion.div style={{ scaleX }} />
             </div>

@@ -1,15 +1,18 @@
-// import Footer from '../../components/Footer';
+import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import { Home } from '../../components/Home';
-import './HomePage.scss';
+import Home from '../../components/Home';
+import InfoBlock from '../../components/InfoBlock';
+import MetricsBlock from '../../components/MetricsBlock';
 
 const HomePage = () => {
     return (
-        <div className="home-page-container">
-            <Header bg={''} />
-            <div className="home-scroll-container">
+        <div className="page-container-scroll">
+            <Header bg={'header__bg'} />
+            <div className="scroll-container">
                 <Home />
-                {/* <Footer /> */}
+                <InfoBlock />
+                <MetricsBlock />
+                <Footer />
             </div>
         </div>
     );

@@ -2,7 +2,12 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import './Header.scss';
 
-const Header = ({ bg }: { bg: string }) => {
+interface HeaderProps {
+    isMainHeader?: boolean;
+    isMainTel?: boolean;
+}
+
+const Header = ({ bg, isMainHeader = false, isMainTel = false }: { bg: string } & HeaderProps) => {
     const showPhoneNumber = () => {
         alert('Позвонить по номеру +74959999999?');
     };
@@ -67,23 +72,6 @@ const Header = ({ bg }: { bg: string }) => {
             menuLogo?.classList.remove('visible');
             menuCopy?.classList.remove('visible');
         });
-
-        /* скрол меню */
-
-        const toggleButton = document.querySelector('.toggle');
-        const header = document.querySelector('.header');
-
-        window.addEventListener('scroll', function () {
-            const scrollPosition = window.scrollY;
-            const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
-            const isFixed = toggleButton?.classList.contains('fixed-toggle');
-
-            if (scrollPosition > headerHeight && !isFixed) {
-                toggleButton?.classList.add('fixed-toggle');
-            } else if (scrollPosition <= headerHeight && isFixed) {
-                toggleButton?.classList.remove('fixed-toggle');
-            }
-        });
     }, []);
 
     return (
@@ -93,19 +81,19 @@ const Header = ({ bg }: { bg: string }) => {
                     <img src={require('./img/logo-no-background.png')} width="100px" alt="Logo PMC Company" className="header__logo" />
                 </Link>
                 <div className="header__right-menu">
-                    <a href="tel:+74959999999" className="tel" onClick={() => showPhoneNumber()}>
+                    <a href="tel:+74959999999" className={`tel ${isMainTel ? 'tel__black' : ''}`} onClick={() => showPhoneNumber()}>
                         +7495-999-9999
                     </a>
                     <div className="app">
                         <button className="toggle">
                             <div>
-                                <span className="toggle__black"></span>
+                                <span className={`toggle ${isMainHeader ? 'toggle__black' : ''}`}></span>
                             </div>
                             <div>
-                                <span className="toggle__black"></span>
+                                <span className={`toggle ${isMainHeader ? 'toggle__black' : ''}`}></span>
                             </div>
                             <div>
-                                <span className="toggle__black"></span>
+                                <span className={`toggle ${isMainHeader ? 'toggle__black' : ''}`}></span>
                             </div>
                         </button>
                     </div>

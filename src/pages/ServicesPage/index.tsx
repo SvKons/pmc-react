@@ -5,7 +5,7 @@ import Services from '../../components/Services';
 const ServicesPage = () => {
     return (
         <div className="page-container-scroll">
-            <Header bg={'header__bg'} />
+            <Header bg={'header__bg'} isMainHeader={true} isMainTel={true} />
             <div className="scroll-container">
                 <Services />
                 <Footer />

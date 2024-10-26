@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 51px;
-    height: 600px;
+    // height: 600px;
     padding-top: 60px;
 }
 
@@ -109,4 +109,32 @@
     transition:
         opacity 0.6s ease-in-out,
         transform 0.6s ease-in-out;
+}
+
+.page-main {
+    height: 100vh;
+}
+
+.dots {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.dot--active {
+    opacity: 1;
 }
